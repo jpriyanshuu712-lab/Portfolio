@@ -13,7 +13,7 @@ const urlish = z
   .trim()
   .max(2000)
   .refine(
-    (v) => v === "" || /^(https?:\/\/|mailto:|\/)/i.test(v) || v.toUpperCase().startsWith("TODO"),
+    (v: string) => v === "" || /^(https?:\/\/|mailto:|\/)/i.test(v) || v.toUpperCase().startsWith("TODO"),
     { message: "Must start with https://, mailto: or /" },
   );
 
@@ -82,7 +82,7 @@ function validator(field: FieldDef): z.ZodTypeAny {
       return z
         .string()
         .max(200)
-        .refine((v) => v.includes("@") || v.toUpperCase().startsWith("TODO"), "Must be an email address")
+        .refine((v: string) => v.includes("@") || v.toUpperCase().startsWith("TODO"), "Must be an email address")
         .nullable();
     case "url":
     case "image":
