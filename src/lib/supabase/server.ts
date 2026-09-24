@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/env";
-import type { Database } from "@/lib/database.types";
 
 /**
  * Server client for Server Components, Route Handlers and Server Actions.
@@ -13,7 +12,7 @@ import type { Database } from "@/lib/database.types";
 export function createClient() {
   const cookieStore = cookies();
 
-  return createServerClient<Database>(getSupabaseUrl(), getSupabaseAnonKey(), {
+  return createServerClient(getSupabaseUrl(), getSupabaseAnonKey(), {
     cookies: {
       getAll() {
         return cookieStore.getAll();
