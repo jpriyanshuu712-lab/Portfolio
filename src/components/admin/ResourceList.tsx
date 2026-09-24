@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
+import type { DragEvent, MouseEvent } from "react";
 import { deleteRecord, duplicateRecord, reorderRecords, setActiveResume, togglePublish } from "@/app/admin/actions";
 import type { ResourceDef } from "@/lib/resources";
 import { cn, formatMonthYear } from "@/lib/utils";
@@ -113,7 +114,7 @@ export default function ResourceList({ resource, rows }: Props) {
                   key={id}
                   draggable={resource.orderable}
                   onDragStart={() => setDragIndex(index)}
-                  onDragOver={(event) => {
+                  onDragOver={(event: DragEvent<HTMLTableRowElement>) => {
                     if (resource.orderable) event.preventDefault();
                   }}
                   onDrop={() => onDrop(index)}
@@ -218,7 +219,7 @@ export default function ResourceList({ resource, rows }: Props) {
           aria-modal="true"
           aria-labelledby="confirm-title"
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-6"
-          onClick={(event) => {
+          onClick={(event: MouseEvent<HTMLDivElement>) => {
             if (event.target === event.currentTarget) setPendingDelete(null);
           }}
         >
