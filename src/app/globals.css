@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "kern", "liga";
+  }
+
+  /* A visible, consistent focus ring everywhere — keyboard users should
+     never have to guess where they are. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper;
+  }
+
+  ::selection {
+    @apply bg-accent/15;
+  }
+}
+
+@layer components {
+  /* Small caps label used throughout the editorial layout. */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted;
+  }
+
+  .rule {
+    @apply border-t border-rule;
+  }
+
+  .prose-editorial p {
+    @apply mb-5 leading-[1.75] text-[17px] text-ink/85;
+  }
+  .prose-editorial p:last-child {
+    @apply mb-0;
+  }
+
+  /* Links inside body copy: underline is the affordance, not colour alone. */
+  .link {
+    @apply underline decoration-rule decoration-1 underline-offset-[3px] transition-colors hover:decoration-accent hover:text-accent;
+  }
+
+  /* Each button class is spelled out in full rather than @apply-ing .btn,
+     because @apply of another custom component class is fragile. */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-accent;
+  }
+  .btn-secondary {
+    @apply border border-rule bg-transparent text-ink hover:border-ink;
+  }
+  .btn-ghost {
+    @apply text-muted hover:text-ink;
+  }
+  .btn-danger {
+    @apply bg-accent text-white hover:bg-accent/85;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+  .field-help {
+    @apply mt-1.5 text-xs leading-relaxed text-muted;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs font-medium text-accent;
+  }
+  .input {
+    @apply w-full rounded-lg border border-rule bg-white px-3 py-2 text-sm text-ink
+           placeholder:text-muted/60 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink;
+  }
+  select.input {
+    @apply appearance-none bg-white pr-9;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%236B6862' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+  }
+
+  .badge,
+  .badge-published,
+  .badge-draft {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em];
+  }
+  .badge-published {
+    @apply bg-emerald-50 text-emerald-800;
+  }
+  .badge-draft {
+    @apply bg-amber-50 text-amber-800;
+  }
+}
+
+/* Skip link: off-screen until focused. */
+.skip-link {
+  @apply absolute left-4 top-4 z-50 -translate-y-24 rounded-full bg-ink px-4 py-2 text-sm text-paper transition-transform focus:translate-y-0;
+}
