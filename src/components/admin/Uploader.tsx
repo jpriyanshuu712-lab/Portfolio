@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import type { ChangeEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 /**
@@ -150,7 +151,7 @@ export function UploadField({
             type="file"
             accept={resolvedAccept}
             disabled={busy}
-            onChange={(event) => {
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
               const file = event.target.files?.[0];
               if (file) void handleFile(file);
             }}
@@ -281,7 +282,7 @@ export function GalleryField({ name, label, bucket, maxMb = 10, defaultValue, he
         multiple
         accept="image/png,image/jpeg,image/webp,image/avif,image/gif"
         disabled={busy}
-        onChange={(event) => {
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
           if (event.target.files?.length) void handleFiles(event.target.files);
           event.target.value = "";
         }}
