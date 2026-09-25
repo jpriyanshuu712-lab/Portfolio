@@ -30,9 +30,9 @@ export default async function AchievementsPage() {
 
                 <div className="max-w-reading">
                   <h2 className="font-serif text-2xl tracking-tight">{item.title}</h2>
-                  {real(item.organization) && <p className="mt-1 text-sm text-accent">{item.organization}</p>}
+                  {real(item.organization) && <p className="mt-1 text-sm text-accent">{real(item.organization)}</p>}
                   {real(item.description) && (
-                    <p className="mt-3 text-[15px] leading-relaxed text-ink/80">{item.description}</p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-ink/80">{real(item.description)}</p>
                   )}
 
                   {image && (
