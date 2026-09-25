@@ -48,7 +48,7 @@ export default async function AboutPage() {
           <ul className="mt-8 divide-y divide-rule border-y border-rule">
             {education.map((item) => {
               const years = [item.start_year, item.end_year].filter(Boolean).join(" – ");
-              const detail = [real(item.major) && `Major: ${item.major}`, real(item.minor) && `Minor: ${item.minor}`]
+              const detail = [real(item.major) && `Major: ${real(item.major)}`, real(item.minor) && `Minor: ${real(item.minor)}`]
                 .filter(Boolean)
                 .join(" · ");
               return (
@@ -57,9 +57,9 @@ export default async function AboutPage() {
                     <h3 className="font-serif text-lg tracking-tight">{item.institution}</h3>
                     <p className="mt-0.5 text-sm text-muted">{item.degree}</p>
                     {detail && <p className="mt-1 text-sm text-muted">{detail}</p>}
-                    {real(item.grade) && <p className="mt-1 font-mono text-xs text-muted">{item.grade}</p>}
+                    {real(item.grade) && <p className="mt-1 font-mono text-xs text-muted">{real(item.grade)}</p>}
                     {real(item.description) && (
-                      <p className="mt-2 max-w-reading text-sm leading-relaxed text-ink/70">{item.description}</p>
+                      <p className="mt-2 max-w-reading text-sm leading-relaxed text-ink/70">{real(item.description)}</p>
                     )}
                   </div>
                   {years && <p className="font-mono text-xs text-muted sm:text-right">{years}</p>}
