@@ -61,7 +61,7 @@ export default async function WritingPage() {
                   <h2 className="font-serif text-2xl leading-snug tracking-tight">{piece.title}</h2>
 
                   {real(piece.description) && (
-                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{piece.description}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{real(piece.description)}</p>
                   )}
 
                   {realList(piece.tags).length > 0 && (
