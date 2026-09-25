@@ -34,7 +34,7 @@ export default async function ExperiencePage() {
               <li key={item.id} className="grid gap-4 py-10 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-10">
                 <div className="sm:pt-1">
                   {range && <p className="font-mono text-xs text-muted">{range}</p>}
-                  {real(item.location) && <p className="mt-1 text-xs text-muted">{item.location}</p>}
+                  {real(item.location) && <p className="mt-1 text-xs text-muted">{real(item.location)}</p>}
                 </div>
 
                 <div className="max-w-reading">
@@ -50,7 +50,7 @@ export default async function ExperiencePage() {
                   <p className="mt-1.5 text-sm text-accent">{item.job_title}</p>
 
                   {real(item.description) && (
-                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{item.description}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{real(item.description)}</p>
                   )}
 
                   {bullets.length > 0 && (
