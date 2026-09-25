@@ -82,9 +82,9 @@ export function isPlaceholder(value: string | null | undefined): boolean {
 /** Returns the value, or null if it is blank or a seed placeholder. */
 export function real(value: string | null | undefined): string | null {
   if (!value) return null;
-  const trimmed = value.trim();
-  if (!trimmed || isPlaceholder(trimmed)) return null;
-  return trimmed;
+  const withoutNote = value.split(/\bTODO\b:?/)[0].trim();
+  if (!withoutNote) return null;
+  return withoutNote;
 }
 
 /** Filters an array down to values that aren't blank or placeholders. */
