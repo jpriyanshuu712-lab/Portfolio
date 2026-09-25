@@ -167,7 +167,7 @@ export default async function HomePage() {
                 <p className="eyebrow mb-3">{piece.writing_type.replace(/_/g, " ")}</p>
                 <h3 className="font-serif text-xl leading-snug tracking-tight">{piece.title}</h3>
                 {real(piece.description) && (
-                  <p className="mt-2.5 text-sm leading-relaxed text-ink/70">{piece.description}</p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-ink/70">{real(piece.description)}</p>
                 )}
                 {realList(piece.tags).length > 0 && (
                   <div className="mt-4">
@@ -189,7 +189,7 @@ export default async function HomePage() {
             {achievements.slice(0, 3).map((item) => (
               <li key={item.id} className="py-5">
                 <h3 className="font-serif text-lg tracking-tight">{item.title}</h3>
-                {real(item.organization) && <p className="mt-0.5 text-sm text-muted">{item.organization}</p>}
+                {real(item.organization) && <p className="mt-0.5 text-sm text-muted">{real(item.organization)}</p>}
               </li>
             ))}
           </ul>
