@@ -38,7 +38,7 @@ export default async function WritingPiecePage({ params }: { params: { slug: str
 
       <h1 className="mt-3 font-serif text-4xl leading-[1.15] tracking-tight sm:text-5xl">{piece.title}</h1>
 
-      {real(piece.description) && <p className="mt-5 text-lg leading-relaxed text-ink/70">{piece.description}</p>}
+      {real(piece.description) && <p className="mt-5 text-lg leading-relaxed text-ink/70">{real(piece.description)}</p>}
 
       <div className="mt-10 border-t border-rule pt-10">
         <Prose text={piece.body} />
